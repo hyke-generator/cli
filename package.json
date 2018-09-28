@@ -25,8 +25,11 @@
     "hike": "./dist/index.js"
   },
   "dependencies": {
+    "@types/chalk": "^2.2.0",
     "@types/node": "^10.11.2",
     "@types/yargs": "^12.0.0",
+    "chalk": "^2.4.1",
+    "chalk-animation": "^1.6.0",
     "yargonaut": "^1.1.4",
     "yargs": "^12.0.2"
   }
