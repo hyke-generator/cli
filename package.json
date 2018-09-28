@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc",
-    "prepublish": "tsc"
+    "build": " tsc -p tsconfig.json",
+    "prepublish": "tsc -p tsconfig.json"
   },
   "repository": {
     "type": "git",
@@ -25,7 +25,9 @@
     "hike": "./dist/index.js"
   },
   "dependencies": {
+    "@types/node": "^10.11.2",
     "@types/yargs": "^12.0.0",
+    "yargonaut": "^1.1.4",
     "yargs": "^12.0.2"
   }
 }

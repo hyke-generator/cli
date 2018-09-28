@@ -3,19 +3,19 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var NewApplicationGenerator_1 = __importDefault(require("../generators/new/NewApplicationGenerator"));
-var newApplicationGenerator = new NewApplicationGenerator_1.default();
-var newApplicationCommand = {
+const NewApplicationGenerator_1 = __importDefault(require("../generators/new/NewApplicationGenerator"));
+const newApplicationGenerator = new NewApplicationGenerator_1.default();
+const newApplicationCommand = {
     command: 'new <AppName>',
     aliases: ['n'],
     describe: 'Generate new application',
-    builder: function (yargs) {
+    builder: (yargs) => {
         return yargs.positional('AppName', {
             describe: 'Application name',
             type: 'string',
         });
     },
-    handler: function (args) {
+    handler: (args) => {
         newApplicationGenerator.generate({
             appName: args.AppName,
         });
