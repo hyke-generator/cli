@@ -1,7 +1,17 @@
 #!/usr/bin/env node
+import yargs, { Arguments, Argv } from 'yargs';
 
-function add(a: number, b: number) {
-    return a + b;
-}
-
-console.log(add(1, 2));
+yargs
+    .command('generate <AppName>', 'Generate new application',
+        (yargs: Argv) => {
+            return yargs.positional('AppName', {
+                describe: 'Application name',
+                type: 'string',
+            });
+        }, (args: Arguments) => {
+            console.log(`Generating application <${args.AppName}>`);
+        })
+    .demandCommand()
+    .showHelpOnFail(true)
+    .help()
+    .argv;
