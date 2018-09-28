@@ -11,7 +11,9 @@ yargs
         }, (args: Arguments) => {
             console.log(`Generating application <${args.AppName}>`);
         })
+
     .demandCommand()
     .showHelpOnFail(true)
+    .strict()
     .help()
     .argv;
