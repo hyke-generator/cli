@@ -1,7 +1,3 @@
-export default abstract class BaseGenerator {
-
-
-    protected abstract generate(): void;
-
-
+export default abstract class BaseGenerator<T> {
+    public abstract generate(args: T): void;
 }

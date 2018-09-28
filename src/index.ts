@@ -1,19 +1,12 @@
 #!/usr/bin/env node
-import yargs, { Arguments, Argv } from 'yargs';
+import yargs from 'yargs';
+import newApplicationCommand from './commands/newApplicationCommand';
 
 yargs
-    .command('generate <AppName>', 'Generate new application',
-        (yargs: Argv) => {
-            return yargs.positional('AppName', {
-                describe: 'Application name',
-                type: 'string',
-            });
-        }, (args: Arguments) => {
-            console.log(`Generating application <${args.AppName}>`);
-        })
-
+    .command(newApplicationCommand)
     .demandCommand()
     .showHelpOnFail(true)
+    .recommendCommands()
     .strict()
     .help()
     .argv;
