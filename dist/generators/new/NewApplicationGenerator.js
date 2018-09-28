@@ -14,10 +14,10 @@ class NewApplicationGenerator extends BaseGenerator_1.default {
         chalk_animation_1.default.rainbow('Generating React Native application. Please wait...');
         execute_1.execute('react-native', ['init', args.appName])
             .then(() => {
-            console.log(chalk_1.default.green('Application successfully generate'));
+            console.log(chalk_1.default.green('Application successfully generated.'));
         })
             .catch(() => {
-            console.log(chalk_1.default.red('Error while generating React Native application'));
+            console.log(chalk_1.default.red('Error while generating React Native application.'));
         });
     }
 }
