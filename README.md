@@ -1,5 +1,7 @@
 # Hike
 
+[![CI Status](https://api.travis-ci.org/lklacar/hike.svg?branch=master)](https://api.travis-ci.org/lklacar/hike.svg?branch=master)
+[![dependencies Status](https://david-dm.org/lklacar/hike/status.svg)](https://david-dm.org/lklacar/hike)
 ## Usage
 
 - Generate new application
