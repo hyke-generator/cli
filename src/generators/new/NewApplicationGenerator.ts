@@ -12,7 +12,7 @@ interface Args {
 export default class NewApplicationGenerator extends BaseGenerator<Args> {
     generate(args: Args): void {
         chalkAnimation.rainbow('Generating React Native application. Please wait...');
-        execute('react-native', ['init', args.appName])
+        execute('react-native', ['init', args.appName, '--template', 'hike'])
             .then(() => {
                 console.log(chalk.green('Application successfully generated.'));
             })

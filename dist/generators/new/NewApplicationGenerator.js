@@ -12,7 +12,7 @@ const chalk_1 = __importDefault(require("chalk"));
 class NewApplicationGenerator extends BaseGenerator_1.default {
     generate(args) {
         chalk_animation_1.default.rainbow('Generating React Native application. Please wait...');
-        execute_1.execute('react-native', ['init', args.appName])
+        execute_1.execute('react-native', ['init', args.appName, '--template', 'hike'])
             .then(() => {
             console.log(chalk_1.default.green('Application successfully generated.'));
         })
