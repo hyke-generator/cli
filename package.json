@@ -31,6 +31,9 @@
     "chalk-animation": "^1.6.0",
     "react-native": "^0.57.1",
     "react-native-cli": "^2.0.1",
+    "@types/chalk": "^2.2.0",
+    "@types/mustache": "^0.8.31",
+    "mustache": "^3.0.0",
     "yargonaut": "^1.1.4",
     "yargs": "^12.0.2"
   }
