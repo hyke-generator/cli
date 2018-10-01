@@ -13,6 +13,14 @@ export function execute(command: string, args?: ReadonlyArray<string>, options?:
                 reject();
             }
         });
+
+        // child.stdout.on('data', (data: string) => {
+        //     console.log(`stdout: ${data}`);
+        // });
+        //
+        // child.stderr.on('data', (data: string) => {
+        //     console.log(`stderr: ${data}`);
+        // });
     });
 
 }
