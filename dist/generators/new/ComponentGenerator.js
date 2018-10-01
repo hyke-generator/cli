@@ -13,16 +13,22 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const BaseGenerator_1 = __importDefault(require("../core/BaseGenerator"));
 const mustache_1 = __importDefault(require("mustache"));
 const fs = __importStar(require("fs"));
+const execute_1 = require("../../util/execute");
+const chalk_1 = __importDefault(require("chalk"));
 class ComponentGenerator extends BaseGenerator_1.default {
     generate(args) {
         const template = fs.readFileSync('./templates/component.mustache').toString();
         const result = mustache_1.default.render(template, { componentName: args.componentName });
-        console.log(result);
-        fs.writeFile(args.componentName + ".tsx", result, function (err) {
-            if (err) {
-                return console.log(err);
-            }
-            console.log("Component generated!");
+        const directoryPath = './src/components';
+        const componentName = args.componentName + '.tsx';
+        execute_1.execute('mkdir', ['-p', directoryPath]).then(() => {
+            fs.writeFile(directoryPath + '/' + componentName, result, function (err) {
+                if (err) {
+                    return console.log(err);
+                }
+                console.log(chalk_1.default.green('Component generated!'));
+                console.log(chalk_1.default.bold('PATH: ' + directoryPath + '/' + componentName));
+            });
         });
     }
 }
