@@ -4,6 +4,7 @@ import { execute } from '../../util/execute';
 import { writeToFile } from '../../util/file';
 import chalk from 'chalk';
 import * as path from 'path';
+
 const requireText = require('require-text');
 
 interface Args {
@@ -12,7 +13,6 @@ interface Args {
 
 export default class ComponentGenerator extends BaseGenerator<Args> {
     generate(args: Args): void {
-
         const directoryPath = './src/components';
         const componentName = args.componentName + '.tsx';
 

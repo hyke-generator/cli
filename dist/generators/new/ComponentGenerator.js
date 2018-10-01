@@ -25,14 +25,7 @@ class ComponentGenerator extends BaseGenerator_1.default {
         const template = requireText(pathToTemplate, require);
         const result = mustache_1.default.render(template, { componentName: args.componentName });
         execute_1.execute('mkdir', ['-p', directoryPath]).then(() => {
-<<<<<<< HEAD
-            fs.writeFile(directoryPath + '/' + componentName, result, (err) => {
-                if (err) {
-                    return console.log(err);
-                }
-=======
             file_1.writeToFile(directoryPath + '/' + componentName, result).then(() => {
->>>>>>> Promise based file creation
                 console.log(chalk_1.default.green('Component generated!'));
                 console.log(chalk_1.default.bold('PATH: ' + directoryPath + '/' + componentName));
             }, (err) => {
