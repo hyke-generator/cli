@@ -13,9 +13,6 @@ function writeToFile(path, data) {
         if (fs.existsSync(path)) {
             reject('Already exists!');
         }
-        if (!fs.existsSync(path)) {
-            console.log('exists NOT');
-        }
         fs.writeFile(path, data, (err) => {
             if (err) {
                 console.log(err);
