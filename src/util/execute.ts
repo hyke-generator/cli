@@ -10,7 +10,7 @@ export function execute(command: string, args?: ReadonlyArray<string>, options?:
             if (code === 0) {
                 resolve();
             } else {
-                reject();
+                reject(new Error(`Could not execute ${command}`));
             }
         });
 
