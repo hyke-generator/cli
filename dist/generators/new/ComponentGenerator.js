@@ -1,6 +1,4 @@
 "use strict";
-<<<<<<< HEAD
-=======
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
@@ -14,17 +12,20 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const BaseGenerator_1 = __importDefault(require("../core/BaseGenerator"));
 const mustache_1 = __importDefault(require("mustache"));
-const fs = __importStar(require("fs"));
 const execute_1 = require("../../util/execute");
 const chalk_1 = __importDefault(require("chalk"));
+const fs = __importStar(require("fs"));
+const path = __importStar(require("path"));
+const requireText = require('require-text');
 class ComponentGenerator extends BaseGenerator_1.default {
     generate(args) {
-        const template = fs.readFileSync('./templates/component.mustache').toString();
-        const result = mustache_1.default.render(template, { componentName: args.componentName });
         const directoryPath = './src/components';
         const componentName = args.componentName + '.tsx';
+        const pathToTemplate = path.join(__dirname, '..', '..', '..', 'templates/component.mustache');
+        const template = requireText(pathToTemplate, require);
+        const result = mustache_1.default.render(template, { componentName: args.componentName });
         execute_1.execute('mkdir', ['-p', directoryPath]).then(() => {
-            fs.writeFile(directoryPath + '/' + componentName, result, function (err) {
+            fs.writeFile(directoryPath + '/' + componentName, result, (err) => {
                 if (err) {
                     return console.log(err);
                 }
@@ -35,5 +36,4 @@ class ComponentGenerator extends BaseGenerator_1.default {
     }
 }
 exports.default = ComponentGenerator;
->>>>>>> Added stateless component generator
 //# sourceMappingURL=ComponentGenerator.js.map

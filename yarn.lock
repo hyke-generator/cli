@@ -3617,6 +3617,10 @@ require-main-filename@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/require-main-filename/-/require-main-filename-1.0.1.tgz#97f717b69d48784f5f526a6c5aa8ffdda055a4d1"
 
+require-text@^0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/require-text/-/require-text-0.0.1.tgz#cde7a3e443b71c14e1ec0d5cefcfcd418dffd66e"
+
 resolve-url@^0.2.1:
   version "0.2.1"
   resolved "https://registry.yarnpkg.com/resolve-url/-/resolve-url-0.2.1.tgz#2c637fe77c893afd2a663fe21aa9080068e2052a"
