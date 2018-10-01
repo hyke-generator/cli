@@ -1,8 +1,8 @@
 import BaseGenerator from '../core/BaseGenerator';
 import Mustache from 'mustache';
 import { execute } from '../../util/execute';
+import { writeToFile } from '../../util/file';
 import chalk from 'chalk';
-import * as fs from 'fs';
 import * as path from 'path';
 const requireText = require('require-text');
 
@@ -20,10 +20,7 @@ export default class ComponentGenerator extends BaseGenerator<Args> {
         const template = requireText(pathToTemplate, require);
         const result = Mustache.render(template, {componentName: args.componentName});
         execute('mkdir', ['-p', directoryPath]).then(() => {
-            fs.writeFile(directoryPath + '/' + componentName, result, (err) => {
-                if(err) {
-                    return console.log(err);
-                }
+            writeToFile(directoryPath + '/' + componentName, result).then(() => {
                 console.log(chalk.green('Component generated!'));
                 console.log(chalk.bold('PATH: ' + directoryPath + '/' + componentName));
             });
