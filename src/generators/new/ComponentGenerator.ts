@@ -23,6 +23,8 @@ export default class ComponentGenerator extends BaseGenerator<Args> {
             writeToFile(directoryPath + '/' + componentName, result).then(() => {
                 console.log(chalk.green('Component generated!'));
                 console.log(chalk.bold('PATH: ' + directoryPath + '/' + componentName));
+            }, (err) => {
+                console.log(chalk.red(err));
             });
         });
 
