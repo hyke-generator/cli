@@ -17,10 +17,11 @@ const chalk_animation_1 = __importDefault(require("chalk-animation"));
 // @ts-ignore
 const chalk_1 = __importDefault(require("chalk"));
 const path = __importStar(require("path"));
+const paths_1 = require("../../util/paths");
 class NewApplicationGenerator extends BaseGenerator_1.default {
     generate(args) {
         chalk_animation_1.default.rainbow('Generating React Native application. Please wait...');
-        const reactNativeCliPath = path.join(__dirname, '..', '..', '..', 'node_modules', 'react-native-cli', 'index.js');
+        const reactNativeCliPath = path.join(paths_1.getNodeModulesDirectory(), 'react-native-cli', 'index.js');
         execute_1.execute('node', [reactNativeCliPath, 'init', args.appName, '--template', 'hike'])
             .then(() => execute_1.execute('node', [`${args.appName}/setup.js`]))
             .then(() => console.log(chalk_1.default.green('Application successfully generated.')))

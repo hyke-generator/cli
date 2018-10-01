@@ -5,6 +5,7 @@ import chalkAnimation from 'chalk-animation';
 // @ts-ignore
 import chalk from 'chalk';
 import * as path from 'path';
+import { getNodeModulesDirectory } from '../../util/paths';
 
 interface Args {
     appName: string;
@@ -14,11 +15,7 @@ export default class NewApplicationGenerator extends BaseGenerator<Args> {
     generate(args: Args): void {
         chalkAnimation.rainbow('Generating React Native application. Please wait...');
         const reactNativeCliPath = path.join(
-            __dirname,
-            '..',
-            '..',
-            '..',
-            'node_modules',
+            getNodeModulesDirectory(),
             'react-native-cli',
             'index.js',
         );
