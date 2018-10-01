@@ -35,6 +35,8 @@ class ComponentGenerator extends BaseGenerator_1.default {
 >>>>>>> Promise based file creation
                 console.log(chalk_1.default.green('Component generated!'));
                 console.log(chalk_1.default.bold('PATH: ' + directoryPath + '/' + componentName));
+            }, (err) => {
+                console.log(chalk_1.default.red(err));
             });
         });
     }
