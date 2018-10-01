@@ -14,7 +14,6 @@ const componentCommand = {
         });
     },
     handler: (args: Arguments) => {
-        console.log(args);
         componentGenerator.generate({
             componentName: args.ComponentName,
         });
