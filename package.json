@@ -25,7 +25,6 @@
     "hike": "./dist/index.js"
   },
   "dependencies": {
-    "@types/chalk": "^2.2.0",
     "@types/node": "^10.11.3",
     "@types/yargs": "^12.0.0",
     "chalk": "^2.4.1",
