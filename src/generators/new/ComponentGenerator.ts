@@ -1,8 +1,10 @@
 import BaseGenerator from '../core/BaseGenerator';
 import Mustache from 'mustache';
-import * as fs from 'fs';
 import { execute } from '../../util/execute';
 import chalk from 'chalk';
+import * as fs from 'fs';
+import * as path from 'path';
+const requireText = require('require-text');
 
 interface Args {
     componentName: string;
@@ -10,12 +12,15 @@ interface Args {
 
 export default class ComponentGenerator extends BaseGenerator<Args> {
     generate(args: Args): void {
-        const template = fs.readFileSync('./templates/component.mustache').toString();
-        const result = Mustache.render(template, {componentName: args.componentName});
+
         const directoryPath = './src/components';
         const componentName = args.componentName + '.tsx';
+
+        const pathToTemplate = path.join(__dirname, '..', '..', '..', 'templates/component.mustache');
+        const template = requireText(pathToTemplate, require);
+        const result = Mustache.render(template, {componentName: args.componentName});
         execute('mkdir', ['-p', directoryPath]).then(() => {
-            fs.writeFile(directoryPath + '/' + componentName, result, function(err) {
+            fs.writeFile(directoryPath + '/' + componentName, result, (err) => {
                 if(err) {
                     return console.log(err);
                 }
