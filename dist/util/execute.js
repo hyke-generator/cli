@@ -12,12 +12,13 @@ function execute(command, args, options) {
                 reject();
             }
         });
-        child.stdout.on('data', (data) => {
-            console.log(`stdout: ${data}`);
-        });
-        child.stderr.on('data', (data) => {
-            console.log(`stderr: ${data}`);
-        });
+        // child.stdout.on('data', (data: string) => {
+        //     console.log(`stdout: ${data}`);
+        // });
+        //
+        // child.stderr.on('data', (data: string) => {
+        //     console.log(`stderr: ${data}`);
+        // });
     });
 }
 exports.execute = execute;
