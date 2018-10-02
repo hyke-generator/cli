@@ -25,8 +25,8 @@ class TemplateGenerator extends BaseGenerator_1.default {
         const componentName = `${args.fileName}.${fileExtension}`;
         const pathToTemplate = path.join(paths_1.getHikeDirectory(), templatePath);
         const template = requireText(pathToTemplate, require);
-        const result = mustache_1.default.render(template, Object.assign({ extension: fileExtension }, args));
-        console.log(Object.assign({ extension: fileExtension }, args));
+        const result = mustache_1.default.render(template, Object.assign({}, args, { extension: fileExtension }));
+        console.log(Object.assign({}, args, { extension: fileExtension }));
         file_1.mkdir(directoryPath)
             .then(() => file_1.writeToFile(path.join(directoryPath, componentName), result))
             .then(() => {
