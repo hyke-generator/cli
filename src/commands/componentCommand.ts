@@ -1,8 +1,11 @@
 import { Arguments, Argv, CommandModule } from 'yargs';
 import buildTemplateGenerator from '../generators/builders/TemplateGeneratorBuilder';
-import { TemplateGeneratorArgs } from '../generators/core/TemplateGenerator';
+import TemplateGenerator, { TemplateGeneratorArgs } from '../generators/core/TemplateGenerator';
 
-const componentGenerator = buildTemplateGenerator<TemplateGeneratorArgs>({
+interface ComponentGeneratorArgs extends TemplateGeneratorArgs {
+}
+
+const componentGenerator: TemplateGenerator<ComponentGeneratorArgs> = buildTemplateGenerator<ComponentGeneratorArgs>({
     outputDirectory: './src/components',
     fileExtension: 'tsx',
     templatePath: 'templates/component.mustache',
