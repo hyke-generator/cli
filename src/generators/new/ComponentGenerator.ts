@@ -1,35 +1,21 @@
-import BaseGenerator from '../core/BaseGenerator';
-import Mustache from 'mustache';
-import { execute } from '../../util/execute';
-import { mkdir, writeToFile } from '../../util/file';
-import chalk from 'chalk';
-import * as path from 'path';
-import { getHikeDirectory } from '../../util/paths';
-
-const requireText = require('require-text');
+import TemplateGenerator from '../core/TemplateGenerator';
 
 interface Args {
-    componentName: string;
+    fileName: string;
 }
 
-export default class ComponentGenerator extends BaseGenerator<Args> {
-    generate(args: Args): void {
-        const directoryPath = './src/components';
-        const componentName = args.componentName + '.tsx';
+export default class ComponentGenerator extends TemplateGenerator<Args> {
 
-        const pathToTemplate = path.join(getHikeDirectory(), 'templates/component.mustache');
-        const template = requireText(pathToTemplate, require);
-        const result = Mustache.render(template, { componentName: args.componentName });
+    protected getOutputDirectory(): string {
+        return './src/components';
+    }
 
-        mkdir(directoryPath)
-            .then(() => writeToFile(path.join(directoryPath, componentName), result))
-            .then(() => {
-                console.log(chalk.green('Component generated!'));
-                console.log(chalk.bold('PATH: ' + path.join(directoryPath, componentName)));
-            })
-            .catch((err: Error) => {
-                return console.log(chalk.red(err.message));
-            });
+    protected getFileExtension(): string {
+        return 'tsx';
+    }
 
+    protected getTemplatePath(): string {
+
+        return 'templates/component.mustache';
     }
 }

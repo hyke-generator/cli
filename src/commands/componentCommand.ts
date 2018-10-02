@@ -15,7 +15,7 @@ const componentCommand = {
     },
     handler: (args: Arguments) => {
         componentGenerator.generate({
-            componentName: args.ComponentName,
+            fileName: args.ComponentName,
         });
     },
 } as CommandModule;
