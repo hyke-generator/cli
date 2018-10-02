@@ -7,13 +7,13 @@ import chalk from 'chalk';
 
 const requireText = require('require-text');
 
-interface Args {
+export interface TemplateGeneratorArgs {
     fileName: string;
 }
 
-export default abstract class TemplateGenerator<T extends Args> extends BaseGenerator<Args> {
+export default abstract class TemplateGenerator<T extends TemplateGeneratorArgs> extends BaseGenerator<TemplateGeneratorArgs> {
 
-    generate(args: Args): void {
+    generate(args: TemplateGeneratorArgs): void {
         const directoryPath = this.getOutputDirectory();
         const fileExtension = this.getFileExtension();
         let templatePath = this.getTemplatePath();
