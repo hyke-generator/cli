@@ -13,7 +13,7 @@ export interface TemplateGeneratorArgs {
 
 export default abstract class TemplateGenerator<T extends TemplateGeneratorArgs> extends BaseGenerator<TemplateGeneratorArgs> {
 
-    generate(args: TemplateGeneratorArgs): void {
+    generate(args: T): void {
         const directoryPath = this.getOutputDirectory();
         const fileExtension = this.getFileExtension();
         let templatePath = this.getTemplatePath();
@@ -21,15 +21,13 @@ export default abstract class TemplateGenerator<T extends TemplateGeneratorArgs>
         const pathToTemplate = path.join(getHikeDirectory(), templatePath);
         const template = requireText(pathToTemplate, require);
 
-        const result = Mustache.render(template, {
-            extension: fileExtension,
-            ...args,
-        });
+        const result = Mustache.render(template,
+            Object.assign({}, args, { extension: fileExtension }),
+        );
 
-        console.log({
-            extension: fileExtension,
-            ...args,
-        });
+        console.log(
+            Object.assign({}, args, { extension: fileExtension }),
+        );
 
         mkdir(directoryPath)
             .then(() => writeToFile(path.join(directoryPath, componentName), result))
