@@ -8,20 +8,28 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const fs = __importStar(require("fs"));
+const execute_1 = require("./execute");
 function writeToFile(path, data) {
     return new Promise((resolve, reject) => {
         if (fs.existsSync(path)) {
-            reject('Already exists!');
+            reject(new Error('Already exists!'));
         }
         fs.writeFile(path, data, (err) => {
             if (err) {
-                console.log(err);
-                reject();
-                return;
+                reject(new Error(`Couldn't write to file ${path}`));
             }
-            resolve();
+            else {
+                resolve();
+            }
         });
     });
 }
 exports.writeToFile = writeToFile;
+function mkdir(directoryPath) {
+    return execute_1.execute('mkdir', ['-p', directoryPath])
+        .catch(() => {
+        throw new Error(`Couldn't create ${directoryPath}`);
+    });
+}
+exports.mkdir = mkdir;
 //# sourceMappingURL=file.js.map
