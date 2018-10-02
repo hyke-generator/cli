@@ -1,1 +1,0 @@
-{"version":3,"file":"ComponentGenerator.js","sourceRoot":"","sources":["../../../src/generators/new/ComponentGenerator.ts"],"names":[],"mappings":";;;;;AAAA,kFAA0D;AAM1D,MAAqB,kBAAmB,SAAQ,2BAAuB;IAEzD,kBAAkB;QACxB,OAAO,kBAAkB,CAAC;IAC9B,CAAC;IAES,gBAAgB;QACtB,OAAO,KAAK,CAAC;IACjB,CAAC;IAES,eAAe;QAErB,OAAO,8BAA8B,CAAC;IAC1C,CAAC;CACJ;AAdD,qCAcC"}
