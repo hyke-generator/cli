@@ -17,7 +17,7 @@ const componentCommand = {
     },
     handler: (args) => {
         componentGenerator.generate({
-            componentName: args.ComponentName,
+            fileName: args.ComponentName,
         });
     },
 };

@@ -9,7 +9,7 @@ function execute(command, args, options) {
                 resolve();
             }
             else {
-                reject();
+                reject(new Error(`Could not execute ${command}`));
             }
         });
         // child.stdout.on('data', (data: string) => {
