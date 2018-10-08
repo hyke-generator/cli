@@ -9,6 +9,7 @@ import { getNodeModulesDirectory } from '../../util/paths';
 
 interface Args {
     appName: string;
+    verbose: boolean;
 }
 
 export default class NewApplicationGenerator extends BaseGenerator<Args> {
@@ -19,8 +20,8 @@ export default class NewApplicationGenerator extends BaseGenerator<Args> {
             'react-native-cli',
             'index.js',
         );
-        execute('node', [reactNativeCliPath, 'init', args.appName, '--template', 'hike'])
-            .then(() => execute('node', [`${args.appName}/setup.js`]))
+        execute('node', [reactNativeCliPath, 'init', args.appName, '--template', 'hike'], {}, args.verbose)
+            .then(() => execute('node', [`${args.appName}/setup.js`], {}, args.verbose))
             .then(() => console.log(chalk.green('Application successfully generated.')))
             .catch(() => {
                 console.log(chalk.red('Error while generating React Native application.'));
