@@ -8,14 +8,20 @@ const newApplicationCommand = {
     aliases: ['n'],
     describe: 'Generate new application',
     builder: (yargs: Argv) => {
-        return yargs.positional('AppName', {
-            describe: 'Application name',
-            type: 'string',
-        });
+        return yargs
+            .positional('AppName', {
+                describe: 'Application name',
+                type: 'string',
+            })
+            .option('verbose', {
+                describe: "Verbose output to console",
+                type: 'boolean',
+            });
     },
     handler: (args: Arguments) => {
         newApplicationGenerator.generate({
             appName: args.AppName,
+            verbose:  args.verbose
         });
     },
 } as CommandModule;

@@ -2,7 +2,7 @@ import { ChildProcess, SpawnOptions } from 'child_process';
 
 const { spawn } = require('child_process');
 
-export function execute(command: string, args?: ReadonlyArray<string>, options?: SpawnOptions): Promise<ChildProcess> {
+export function execute(command: string, args?: ReadonlyArray<string>, options?: SpawnOptions, verbose: boolean = false): Promise<ChildProcess> {
     return new Promise<ChildProcess>((resolve, reject) => {
         const child = spawn(command, args, options);
 
@@ -14,14 +14,15 @@ export function execute(command: string, args?: ReadonlyArray<string>, options?:
             }
         });
 
-        // child.stdout.on('data', (data: string) => {
-        //     console.log(`stdout: ${data}`);
-        // });
-        //
-        // child.stderr.on('data', (data: string) => {
-        //     console.log(`stderr: ${data}`);
-        // });
+        if (verbose) {
+            child.stdout.on('data', (data: string) => {
+                console.log(`stdout: ${data}`);
+            });
 
+            child.stderr.on('data', (data: string) => {
+                console.log(`stderr: ${data}`);
+            });
+        }
     });
 
 }
