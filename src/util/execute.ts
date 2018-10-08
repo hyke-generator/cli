@@ -14,15 +14,18 @@ export function execute(command: string, args?: ReadonlyArray<string>, options?:
             }
         });
 
-        if (verbose) {
-            child.stdout.on('data', (data: string) => {
+        child.stdout.on('data', (data: string) => {
+            if (verbose) {
                 console.log(`stdout: ${data}`);
-            });
+            }
 
-            child.stderr.on('data', (data: string) => {
+        });
+
+        child.stderr.on('data', (data: string) => {
+            if (verbose) {
                 console.log(`stderr: ${data}`);
-            });
-        }
+            }
+        });
     });
 
 }

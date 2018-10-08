@@ -12,14 +12,16 @@ function execute(command, args, options, verbose = false) {
                 reject(new Error(`Could not execute ${command}`));
             }
         });
-        if (verbose) {
-            child.stdout.on('data', (data) => {
+        child.stdout.on('data', (data) => {
+            if (verbose) {
                 console.log(`stdout: ${data}`);
-            });
-            child.stderr.on('data', (data) => {
+            }
+        });
+        child.stderr.on('data', (data) => {
+            if (verbose) {
                 console.log(`stderr: ${data}`);
-            });
-        }
+            }
+        });
     });
 }
 exports.execute = execute;
