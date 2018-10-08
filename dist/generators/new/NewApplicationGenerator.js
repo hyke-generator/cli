@@ -22,8 +22,8 @@ class NewApplicationGenerator extends BaseGenerator_1.default {
     generate(args) {
         chalk_animation_1.default.rainbow('Generating React Native application. Please wait...');
         const reactNativeCliPath = path.join(paths_1.getNodeModulesDirectory(), 'react-native-cli', 'index.js');
-        execute_1.execute('node', [reactNativeCliPath, 'init', args.appName, '--template', 'hike'])
-            .then(() => execute_1.execute('node', [`${args.appName}/setup.js`]))
+        execute_1.execute('node', [reactNativeCliPath, 'init', args.appName, '--template', 'hike'], {}, args.verbose)
+            .then(() => execute_1.execute('node', [`${args.appName}/setup.js`], {}, args.verbose))
             .then(() => console.log(chalk_1.default.green('Application successfully generated.')))
             .catch(() => {
             console.log(chalk_1.default.red('Error while generating React Native application.'));
