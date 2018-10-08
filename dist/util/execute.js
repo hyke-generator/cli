@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const { spawn } = require('child_process');
-function execute(command, args, options) {
+function execute(command, args, options, verbose = false) {
     return new Promise((resolve, reject) => {
         const child = spawn(command, args, options);
         child.on('exit', function (code, signal) {
@@ -12,13 +12,14 @@ function execute(command, args, options) {
                 reject(new Error(`Could not execute ${command}`));
             }
         });
-        // child.stdout.on('data', (data: string) => {
-        //     console.log(`stdout: ${data}`);
-        // });
-        //
-        // child.stderr.on('data', (data: string) => {
-        //     console.log(`stderr: ${data}`);
-        // });
+        if (verbose) {
+            child.stdout.on('data', (data) => {
+                console.log(`stdout: ${data}`);
+            });
+            child.stderr.on('data', (data) => {
+                console.log(`stderr: ${data}`);
+            });
+        }
     });
 }
 exports.execute = execute;
