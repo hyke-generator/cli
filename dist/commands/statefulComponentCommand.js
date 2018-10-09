@@ -4,12 +4,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const TemplateGeneratorBuilder_1 = __importDefault(require("../generators/builders/TemplateGeneratorBuilder"));
-const componentGenerator = TemplateGeneratorBuilder_1.default({
+const upperCamelCase = require("uppercamelcase");
+const statefulComponentGenerator = TemplateGeneratorBuilder_1.default({
     outputDirectory: './src/components',
     fileExtension: 'tsx',
     templatePath: 'templates/StatefulComponent.mustache',
 });
-const statelessComponentCommand = {
+const statefulComponentCommand = {
     command: 'stateful <ComponentName>',
     aliases: ['sf'],
     describe: 'Add new stateful component',
@@ -20,10 +21,11 @@ const statelessComponentCommand = {
         });
     },
     handler: (args) => {
-        componentGenerator.generate({
-            fileName: args.ComponentName,
+        statefulComponentGenerator.generate({
+            fileName: upperCamelCase(args.ComponentName),
+            componentName: upperCamelCase(args.ComponentName)
         });
     },
 };
-exports.default = statelessComponentCommand;
+exports.default = statefulComponentCommand;
 //# sourceMappingURL=statefulComponentCommand.js.map
