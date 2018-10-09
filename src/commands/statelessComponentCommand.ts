@@ -1,8 +1,10 @@
 import { Arguments, Argv, CommandModule } from 'yargs';
 import buildTemplateGenerator from '../generators/builders/TemplateGeneratorBuilder';
 import TemplateGenerator, { TemplateGeneratorArgs } from '../generators/core/TemplateGenerator';
+import upperCamelCase = require('uppercamelcase');
 
 interface ComponentGeneratorArgs extends TemplateGeneratorArgs {
+    componentName: string;
 }
 
 const componentGenerator: TemplateGenerator<ComponentGeneratorArgs> = buildTemplateGenerator<ComponentGeneratorArgs>({
@@ -23,7 +25,8 @@ const statelessComponentCommand = {
     },
     handler: (args: Arguments) => {
         componentGenerator.generate({
-            fileName: args.ComponentName,
+            fileName: upperCamelCase(args.ComponentName),
+            componentName: upperCamelCase(args.ComponentName),
         });
     },
 } as CommandModule;
