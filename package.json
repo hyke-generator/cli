@@ -19,7 +19,10 @@
   },
   "homepage": "https://github.com/lklacar/hike#readme",
   "devDependencies": {
+    "@types/camelcase": "^4.1.0",
+    "@types/decamelize": "^1.2.0",
     "@types/node": "^10.11.3",
+    "@types/uppercamelcase": "^3.0.0",
     "typescript": "^3.1.1"
   },
   "bin": {
@@ -30,12 +33,15 @@
     "@types/mustache": "^0.8.31",
     "@types/node": "^10.11.3",
     "@types/yargs": "^12.0.0",
+    "camelcase": "^5.0.0",
     "chalk": "^2.4.1",
     "chalk-animation": "^1.6.0",
+    "decamelize": "^2.0.0",
     "mustache": "^3.0.0",
     "react-native": "^0.57.1",
     "react-native-cli": "^2.0.1",
     "require-text": "^0.0.1",
+    "uppercamelcase": "^3.0.0",
     "yargonaut": "^1.1.4",
     "yargs": "^12.0.2"
   }
