@@ -17,10 +17,13 @@ hike help
 hike <command>
 
 Commands:
-  hike new <AppName>  Generate new application                      [aliases: n]
+  hike new <AppName>              Generate new application          [aliases: n]
+  hike stateless <ComponentName>  Add new stateless component      [aliases: sl]
+  hike stateful <ComponentName>   Add new stateful component       [aliases: sf]
+  hike action  <ActionName>       Add new action                    [aliases: a]
+  hike screen <ScreenName>        Add new scree                     [aliases: s]
 
 Options:
   --version  Show version number                                       [boolean]
   --help     Show help                                                 [boolean]
-
 ```
