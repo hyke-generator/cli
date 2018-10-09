@@ -8,6 +8,7 @@ import yargonaut from 'yargonaut';
 import actionCommand from './commands/actionCommand';
 import screenCommand from './commands/screenComponentCommand';
 import reducerCommand from './commands/reducerCommand';
+import stateCommand from './commands/stateCommand';
 
 yargonaut
     .helpStyle('green')
@@ -20,6 +21,7 @@ yargs
     .command(actionCommand)
     .command(screenCommand)
     .command(reducerCommand)
+    .command(stateCommand)
     .demandCommand()
     .showHelpOnFail(true)
     .recommendCommands()
