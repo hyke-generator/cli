@@ -1,17 +1,19 @@
 import { Arguments, Argv, CommandModule } from 'yargs';
 import buildTemplateGenerator from '../generators/builders/TemplateGeneratorBuilder';
 import TemplateGenerator, { TemplateGeneratorArgs } from '../generators/core/TemplateGenerator';
+import upperCamelCase = require('uppercamelcase');
 
 interface ComponentGeneratorArgs extends TemplateGeneratorArgs {
+    componentName: string;
 }
 
-const componentGenerator: TemplateGenerator<ComponentGeneratorArgs> = buildTemplateGenerator<ComponentGeneratorArgs>({
+const statefulComponentGenerator: TemplateGenerator<ComponentGeneratorArgs> = buildTemplateGenerator<ComponentGeneratorArgs>({
     outputDirectory: './src/components',
     fileExtension: 'tsx',
     templatePath: 'templates/StatefulComponent.mustache',
 });
 
-const statelessComponentCommand = {
+const statefulComponentCommand = {
     command: 'stateful <ComponentName>',
     aliases: ['sf'],
     describe: 'Add new stateful component',
@@ -22,10 +24,11 @@ const statelessComponentCommand = {
         });
     },
     handler: (args: Arguments) => {
-        componentGenerator.generate({
-            fileName: args.ComponentName,
+        statefulComponentGenerator.generate({
+            fileName: upperCamelCase(args.ComponentName),
+            componentName: upperCamelCase(args.ComponentName)
         });
     },
 } as CommandModule;
 
-export default statelessComponentCommand;
+export default statefulComponentCommand;
