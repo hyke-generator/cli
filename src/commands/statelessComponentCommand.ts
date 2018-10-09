@@ -8,13 +8,13 @@ interface ComponentGeneratorArgs extends TemplateGeneratorArgs {
 const componentGenerator: TemplateGenerator<ComponentGeneratorArgs> = buildTemplateGenerator<ComponentGeneratorArgs>({
     outputDirectory: './src/components',
     fileExtension: 'tsx',
-    templatePath: 'templates/component.mustache',
+    templatePath: 'templates/StatelessComponent.mustache',
 });
 
-const componentCommand = {
-    command: 'component <ComponentName>',
-    aliases: ['c'],
-    describe: 'Add new component',
+const statelessComponentCommand = {
+    command: 'stateless <ComponentName>',
+    aliases: ['sl'],
+    describe: 'Add new stateless component',
     builder: (yargs: Argv) => {
         return yargs.positional('ComponentName', {
             describe: 'Component name',
@@ -28,4 +28,4 @@ const componentCommand = {
     },
 } as CommandModule;
 
-export default componentCommand;
+export default statelessComponentCommand;

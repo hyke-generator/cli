@@ -1,15 +1,20 @@
 import * as React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import PropTypes from 'prop-types';
 
 const {{ fileName }} = () =>
     <View style={styles.container}>
         <Text>{{ fileName }}</Text>
     </View>;
 
+{{ fileName }}.propTypes = {
+
+}
+
 const styles = StyleSheet.create({
     container: {
         flex: 1
     }
-})
+});
 
 export default {{ fileName }};
