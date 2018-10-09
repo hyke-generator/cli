@@ -6,6 +6,7 @@ import statefulComponentCommand from './commands/statefulComponentCommand';
 // @ts-ignore
 import yargonaut from 'yargonaut';
 import actionCommand from './commands/actionCommand';
+import screenCommand from './commands/screenComponentCommand';
 
 yargonaut
     .helpStyle('green')
@@ -16,6 +17,7 @@ yargs
     .command(statelessComponentCommand)
     .command(statefulComponentCommand)
     .command(actionCommand)
+    .command(screenCommand)
     .demandCommand()
     .showHelpOnFail(true)
     .recommendCommands()
