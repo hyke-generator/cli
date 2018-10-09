@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 import yargs from 'yargs';
 import newApplicationCommand from './commands/newApplicationCommand';
-import generateStatelessComponentCommand from './commands/statelessComponentCommand';
+import statelessComponentCommand from './commands/statelessComponentCommand';
+import statefulComponentCommand from './commands/statefulComponentCommand';
 // @ts-ignore
 import yargonaut from 'yargonaut';
 
@@ -11,7 +12,8 @@ yargonaut
 
 yargs
     .command(newApplicationCommand)
-    .command(generateStatelessComponentCommand)
+    .command(statelessComponentCommand)
+    .command(statefulComponentCommand)
     .demandCommand()
     .showHelpOnFail(true)
     .recommendCommands()
