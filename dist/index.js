@@ -11,6 +11,7 @@ const statefulComponentCommand_1 = __importDefault(require("./commands/statefulC
 // @ts-ignore
 const yargonaut_1 = __importDefault(require("yargonaut"));
 const actionCommand_1 = __importDefault(require("./commands/actionCommand"));
+const screenComponentCommand_1 = __importDefault(require("./commands/screenComponentCommand"));
 yargonaut_1.default
     .helpStyle('green')
     .errorsStyle('red');
@@ -19,6 +20,7 @@ yargs_1.default
     .command(statelessComponentCommand_1.default)
     .command(statefulComponentCommand_1.default)
     .command(actionCommand_1.default)
+    .command(screenComponentCommand_1.default)
     .demandCommand()
     .showHelpOnFail(true)
     .recommendCommands()

@@ -4,6 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const TemplateGeneratorBuilder_1 = __importDefault(require("../generators/builders/TemplateGeneratorBuilder"));
+const upperCamelCase = require("uppercamelcase");
 const componentGenerator = TemplateGeneratorBuilder_1.default({
     outputDirectory: './src/components',
     fileExtension: 'tsx',
@@ -21,7 +22,8 @@ const statelessComponentCommand = {
     },
     handler: (args) => {
         componentGenerator.generate({
-            fileName: args.ComponentName,
+            fileName: upperCamelCase(args.ComponentName),
+            componentName: upperCamelCase(args.ComponentName),
         });
     },
 };
