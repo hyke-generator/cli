@@ -11,7 +11,7 @@ export function execute(
     return new Promise<ChildProcess>((resolve, reject) => {
         const child = spawn(command, args, options);
 
-        child.on("exit", (code: any, signal: any) => {
+        child.on("exit", (code: number, signal: string) => {
             if (code === 0) {
                 resolve();
             } else {
