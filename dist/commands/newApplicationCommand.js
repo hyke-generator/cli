@@ -6,24 +6,24 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const NewApplicationGenerator_1 = __importDefault(require("../generators/new/NewApplicationGenerator"));
 const newApplicationGenerator = new NewApplicationGenerator_1.default();
 const newApplicationCommand = {
-    command: 'new <AppName>',
-    aliases: ['n'],
-    describe: 'Generate new application',
+    command: "new <AppName>",
+    aliases: ["n"],
+    describe: "Generate new application",
     builder: (yargs) => {
         return yargs
-            .positional('AppName', {
-            describe: 'Application name',
-            type: 'string',
+            .positional("AppName", {
+            describe: "Application name",
+            type: "string",
         })
-            .option('verbose', {
+            .option("verbose", {
             describe: "Verbose output to console",
-            type: 'boolean',
+            type: "boolean",
         });
     },
     handler: (args) => {
         newApplicationGenerator.generate({
             appName: args.AppName,
-            verbose: args.verbose
+            verbose: args.verbose,
         });
     },
 };

@@ -8,15 +8,16 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const fs = __importStar(require("fs"));
+const error_1 = require("tslint/lib/error");
 const execute_1 = require("./execute");
 function writeToFile(path, data) {
     return new Promise((resolve, reject) => {
         if (fs.existsSync(path)) {
-            reject(new Error('Already exists!'));
+            reject(new error_1.Error("Already exists!"));
         }
         fs.writeFile(path, data, (err) => {
             if (err) {
-                reject(new Error(`Couldn't write to file ${path}`));
+                reject(new error_1.Error(`Couldn't write to file ${path}`));
             }
             else {
                 resolve();
@@ -26,9 +27,8 @@ function writeToFile(path, data) {
 }
 exports.writeToFile = writeToFile;
 function mkdir(directoryPath) {
-    return execute_1.execute('mkdir', ['-p', directoryPath])
-        .catch(() => {
-        throw new Error(`Couldn't create ${directoryPath}`);
+    return execute_1.execute("mkdir", ["-p", directoryPath]).catch(() => {
+        throw new error_1.Error(`Couldn't create ${directoryPath}`);
     });
 }
 exports.mkdir = mkdir;

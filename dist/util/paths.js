@@ -9,11 +9,11 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const path = __importStar(require("path"));
 function getHikeDirectory() {
-    return path.join(__dirname, '..', '..');
+    return path.join(__dirname, "..", "..");
 }
 exports.getHikeDirectory = getHikeDirectory;
 function getNodeModulesDirectory() {
-    return path.join(getHikeDirectory(), 'node_modules');
+    return path.join(getHikeDirectory(), "node_modules");
 }
 exports.getNodeModulesDirectory = getNodeModulesDirectory;
 //# sourceMappingURL=paths.js.map

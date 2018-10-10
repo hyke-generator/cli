@@ -15,7 +15,7 @@ function buildTemplateGenerator(args) {
         getTemplatePath() {
             return args.templatePath;
         }
-    };
+    }();
 }
 exports.default = buildTemplateGenerator;
 //# sourceMappingURL=TemplateGeneratorBuilder.js.map
