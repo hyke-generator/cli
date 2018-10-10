@@ -1,17 +1,18 @@
 import upperCamelCase = require("uppercamelcase");
 import { Arguments, Argv, CommandModule } from "yargs";
 import buildTemplateGenerator from "../generators/builders/TemplateGeneratorBuilder";
-import TemplateGenerator, { TemplateGeneratorArgs } from "../generators/core/TemplateGenerator";
+import TemplateGenerator, { ITemplateGeneratorArgs } from "../generators/core/TemplateGenerator";
 
-interface ComponentGeneratorArgs extends TemplateGeneratorArgs {
+interface IComponentGeneratorArgs extends ITemplateGeneratorArgs {
     componentName: string;
 }
 
-const statefulComponentGenerator: TemplateGenerator<ComponentGeneratorArgs> = buildTemplateGenerator<ComponentGeneratorArgs>({
-    outputDirectory: "./src/components",
-    fileExtension: "tsx",
-    templatePath: "templates/StatefulComponent.mustache",
-});
+const statefulComponentGenerator: TemplateGenerator<IComponentGeneratorArgs> =
+    buildTemplateGenerator<IComponentGeneratorArgs>({
+        outputDirectory: "./src/components",
+        fileExtension: "tsx",
+        templatePath: "templates/StatefulComponent.mustache",
+    });
 
 const statefulComponentCommand = {
     command: "stateful <ComponentName>",

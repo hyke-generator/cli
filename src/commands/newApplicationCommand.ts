@@ -21,7 +21,7 @@ const newApplicationCommand = {
     handler: (args: Arguments) => {
         newApplicationGenerator.generate({
             appName: args.AppName,
-            verbose:  args.verbose,
+            verbose: args.verbose,
         });
     },
 } as CommandModule;

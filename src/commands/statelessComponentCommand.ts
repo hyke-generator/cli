@@ -1,13 +1,13 @@
 import upperCamelCase = require("uppercamelcase");
 import { Arguments, Argv, CommandModule } from "yargs";
 import buildTemplateGenerator from "../generators/builders/TemplateGeneratorBuilder";
-import TemplateGenerator, { TemplateGeneratorArgs } from "../generators/core/TemplateGenerator";
+import TemplateGenerator, { ITemplateGeneratorArgs } from "../generators/core/TemplateGenerator";
 
-interface ComponentGeneratorArgs extends TemplateGeneratorArgs {
+interface IComponentGeneratorArgs extends ITemplateGeneratorArgs {
     componentName: string;
 }
 
-const componentGenerator: TemplateGenerator<ComponentGeneratorArgs> = buildTemplateGenerator<ComponentGeneratorArgs>({
+const componentGenerator: TemplateGenerator<IComponentGeneratorArgs> = buildTemplateGenerator<IComponentGeneratorArgs>({
     outputDirectory: "./src/components",
     fileExtension: "tsx",
     templatePath: "templates/StatelessComponent.mustache",

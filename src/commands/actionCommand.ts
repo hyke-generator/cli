@@ -3,15 +3,15 @@ import decamelize from "decamelize";
 import uppercamelcase from "uppercamelcase";
 import { Arguments, Argv, CommandModule } from "yargs";
 import buildTemplateGenerator from "../generators/builders/TemplateGeneratorBuilder";
-import TemplateGenerator, { TemplateGeneratorArgs } from "../generators/core/TemplateGenerator";
+import TemplateGenerator, { ITemplateGeneratorArgs } from "../generators/core/TemplateGenerator";
 
-interface ComponentGeneratorArgs extends TemplateGeneratorArgs {
+interface IComponentGeneratorArgs extends ITemplateGeneratorArgs {
     actionNameUpperUnderscore: string;
     actionNameUpperCamelCase: string;
     actionNameLowerCamelCase: string;
 }
 
-const actionGenerator: TemplateGenerator<ComponentGeneratorArgs> = buildTemplateGenerator<ComponentGeneratorArgs>({
+const actionGenerator: TemplateGenerator<IComponentGeneratorArgs> = buildTemplateGenerator<IComponentGeneratorArgs>({
     outputDirectory: "./src/actions",
     fileExtension: "ts",
     templatePath: "templates/action.mustache",

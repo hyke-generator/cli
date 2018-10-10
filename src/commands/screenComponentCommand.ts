@@ -1,13 +1,13 @@
 import upperCamelCase = require("uppercamelcase");
 import { Arguments, Argv, CommandModule } from "yargs";
 import buildTemplateGenerator from "../generators/builders/TemplateGeneratorBuilder";
-import TemplateGenerator, { TemplateGeneratorArgs } from "../generators/core/TemplateGenerator";
+import TemplateGenerator, { ITemplateGeneratorArgs } from "../generators/core/TemplateGenerator";
 
-interface ScreenGeneratorArgs extends TemplateGeneratorArgs {
+interface IScreenGeneratorArgs extends ITemplateGeneratorArgs {
     screenName: string;
 }
 
-const screenGenerator: TemplateGenerator<ScreenGeneratorArgs> = buildTemplateGenerator<ScreenGeneratorArgs>({
+const screenGenerator: TemplateGenerator<IScreenGeneratorArgs> = buildTemplateGenerator<IScreenGeneratorArgs>({
     outputDirectory: "./src/screens",
     fileExtension: "tsx",
     templatePath: "templates/Screen.mustache",
