@@ -1,12 +1,14 @@
-import TemplateGenerator, { TemplateGeneratorArgs } from '../core/TemplateGenerator';
+import TemplateGenerator, { ITemplateGeneratorArgs } from "../core/TemplateGenerator";
 
-export interface TemplateGeneratorBuilderArguments {
+export interface ITemplateGeneratorBuilderArguments {
     fileExtension: string;
     outputDirectory: string;
     templatePath: string;
 }
 
-export default function buildTemplateGenerator<T extends TemplateGeneratorArgs>(args: TemplateGeneratorBuilderArguments) {
+export default function buildTemplateGenerator<T extends ITemplateGeneratorArgs>(
+    args: ITemplateGeneratorBuilderArguments,
+) {
     return new class Generator extends TemplateGenerator<T> {
         protected getFileExtension(): string {
             return args.fileExtension;
@@ -19,5 +21,5 @@ export default function buildTemplateGenerator<T extends TemplateGeneratorArgs>(
         protected getTemplatePath(): string {
             return args.templatePath;
         }
-    };
+    }();
 }

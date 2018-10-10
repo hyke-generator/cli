@@ -1,13 +1,13 @@
 import camelcase = require("camelcase");
 import { Arguments, Argv, CommandModule } from "yargs";
 import buildTemplateGenerator from "../generators/builders/TemplateGeneratorBuilder";
-import TemplateGenerator, { TemplateGeneratorArgs } from "../generators/core/TemplateGenerator";
+import TemplateGenerator, { ITemplateGeneratorArgs } from "../generators/core/TemplateGenerator";
 
-interface ReducerGeneratorArgs extends TemplateGeneratorArgs {
+interface IReducerGeneratorArgs extends ITemplateGeneratorArgs {
     reducerName: string;
 }
 
-const reducerGenerator: TemplateGenerator<ReducerGeneratorArgs> = buildTemplateGenerator<ReducerGeneratorArgs>({
+const reducerGenerator: TemplateGenerator<IReducerGeneratorArgs> = buildTemplateGenerator<IReducerGeneratorArgs>({
     outputDirectory: "./src/reducers",
     fileExtension: "ts",
     templatePath: "templates/reducer.mustache",

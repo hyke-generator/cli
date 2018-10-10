@@ -1,6 +1,7 @@
 import { ChildProcess } from "child_process";
 import * as fs from "fs";
 import { PathLike } from "fs";
+import { Error } from "tslint/lib/error";
 import { execute } from "./execute";
 
 export function writeToFile(path: PathLike, data: any): Promise<void> {
@@ -19,8 +20,7 @@ export function writeToFile(path: PathLike, data: any): Promise<void> {
 }
 
 export function mkdir(directoryPath: string): Promise<ChildProcess> {
-    return execute("mkdir", ["-p", directoryPath])
-        .catch(() => {
-            throw new Error(`Couldn't create ${directoryPath}`);
-        });
+    return execute("mkdir", ["-p", directoryPath]).catch(() => {
+        throw new Error(`Couldn't create ${directoryPath}`);
+    });
 }

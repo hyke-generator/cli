@@ -1,19 +1,18 @@
 #!/usr/bin/env node
-import yargs from 'yargs';
-import newApplicationCommand from './commands/newApplicationCommand';
-import statelessComponentCommand from './commands/statelessComponentCommand';
-import statefulComponentCommand from './commands/statefulComponentCommand';
 // @ts-ignore
-import yargonaut from 'yargonaut';
-import actionCommand from './commands/actionCommand';
-import screenCommand from './commands/screenComponentCommand';
-import reducerCommand from './commands/reducerCommand';
-import stateCommand from './commands/stateCommand';
+import yargonaut from "yargonaut";
+import yargs from "yargs";
+import actionCommand from "./commands/actionCommand";
+import newApplicationCommand from "./commands/newApplicationCommand";
+import reducerCommand from "./commands/reducerCommand";
+import screenCommand from "./commands/screenComponentCommand";
+import stateCommand from "./commands/stateCommand";
+import statefulComponentCommand from "./commands/statefulComponentCommand";
+import statelessComponentCommand from "./commands/statelessComponentCommand";
 
-yargonaut
-    .helpStyle('green')
-    .errorsStyle('red');
+yargonaut.helpStyle("green").errorsStyle("red");
 
+// tslint:disable-next-line:no-unused-expression
 yargs
     .command(newApplicationCommand)
     .command(statelessComponentCommand)
@@ -26,5 +25,4 @@ yargs
     .showHelpOnFail(true)
     .recommendCommands()
     .strict()
-    .help()
-    .argv;
+    .help().argv;

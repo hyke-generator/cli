@@ -1,38 +1,33 @@
-import BaseGenerator from './BaseGenerator';
-import * as path from 'path';
-import { getHikeDirectory } from '../../util/paths';
-import Mustache from 'mustache';
-import { mkdir, writeToFile } from '../../util/file';
-import chalk from 'chalk';
+import chalk from "chalk";
+import Mustache from "mustache";
+import * as path from "path";
+// @ts-ignore
+import requireText from "require-text";
+import { mkdir, writeToFile } from "../../util/file";
+import { getHikeDirectory } from "../../util/paths";
+import BaseGenerator from "./BaseGenerator";
 
-const requireText = require('require-text');
-
-export interface TemplateGeneratorArgs {
+export interface ITemplateGeneratorArgs {
     fileName: string;
 }
 
-export default abstract class TemplateGenerator<T extends TemplateGeneratorArgs> extends BaseGenerator<TemplateGeneratorArgs> {
-
-    generate(args: T): void {
+export default abstract class TemplateGenerator<T extends ITemplateGeneratorArgs> extends BaseGenerator<
+    ITemplateGeneratorArgs
+> {
+    public generate(args: T): void {
         const directoryPath = this.getOutputDirectory();
         const fileExtension = this.getFileExtension();
-        let templatePath = this.getTemplatePath();
+        const templatePath = this.getTemplatePath();
         const componentName = `${args.fileName}.${fileExtension}`;
         const pathToTemplate = path.join(getHikeDirectory(), templatePath);
         const template = requireText(pathToTemplate, require);
 
-        const result = Mustache.render(template,
-            Object.assign({}, args, { extension: fileExtension }),
-        );
-
-        console.log(
-            Object.assign({}, args, { extension: fileExtension }),
-        );
+        const result = Mustache.render(template, Object.assign({}, args, { extension: fileExtension }));
 
         mkdir(directoryPath)
             .then(() => writeToFile(path.join(directoryPath, componentName), result))
             .then(() => {
-                console.log(chalk.green('Component generated!'));
+                console.log(chalk.green("Component generated!"));
                 console.log(chalk.bold(`PATH: ${path.join(directoryPath, componentName)}`));
             })
             .catch((err: Error) => console.log(chalk.red(err.message)));
@@ -43,5 +38,4 @@ export default abstract class TemplateGenerator<T extends TemplateGeneratorArgs>
     protected abstract getFileExtension(): string;
 
     protected abstract getOutputDirectory(): string;
-
 }
