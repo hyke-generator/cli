@@ -1,9 +1,9 @@
-import { Arguments, Argv, CommandModule } from 'yargs';
-import buildTemplateGenerator from '../generators/builders/TemplateGeneratorBuilder';
-import TemplateGenerator, { TemplateGeneratorArgs } from '../generators/core/TemplateGenerator';
-import uppercamelcase from 'uppercamelcase';
-import decamelize from 'decamelize';
-import camelcase from 'camelcase';
+import camelcase from "camelcase";
+import decamelize from "decamelize";
+import uppercamelcase from "uppercamelcase";
+import { Arguments, Argv, CommandModule } from "yargs";
+import buildTemplateGenerator from "../generators/builders/TemplateGeneratorBuilder";
+import TemplateGenerator, { TemplateGeneratorArgs } from "../generators/core/TemplateGenerator";
 
 interface ComponentGeneratorArgs extends TemplateGeneratorArgs {
     actionNameUpperUnderscore: string;
@@ -12,19 +12,19 @@ interface ComponentGeneratorArgs extends TemplateGeneratorArgs {
 }
 
 const actionGenerator: TemplateGenerator<ComponentGeneratorArgs> = buildTemplateGenerator<ComponentGeneratorArgs>({
-    outputDirectory: './src/actions',
-    fileExtension: 'ts',
-    templatePath: 'templates/action.mustache',
+    outputDirectory: "./src/actions",
+    fileExtension: "ts",
+    templatePath: "templates/action.mustache",
 });
 
 const actionCommand = {
-    command: 'action  <ActionName>',
-    aliases: ['a'],
-    describe: 'Add new action',
+    command: "action  <ActionName>",
+    aliases: ["a"],
+    describe: "Add new action",
     builder: (yargs: Argv) => {
-        return yargs.positional('ActionName', {
-            describe: 'Action name',
-            type: 'string',
+        return yargs.positional("ActionName", {
+            describe: "Action name",
+            type: "string",
         });
     },
     handler: (args: Arguments) => {
