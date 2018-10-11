@@ -20,53 +20,40 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const yargonaut_1 = __importDefault(require("yargonaut"));
-const fs = __importStar(require("fs"));
-const HELP_STYLE = 'green';
-const ERROR_STYLE = 'red';
+const initCommand_1 = __importDefault(require("./commands/initCommand"));
+const yargs = __importStar(require("yargs"));
+const addCommand_1 = __importDefault(require("./commands/addCommand"));
+const util_1 = require("./util");
+const path = __importStar(require("path"));
+const HELP_STYLE = "green";
+const ERROR_STYLE = "red";
 const HIKE_CONFIG_NAME = "hike.json";
-function readFile(path) {
-    return new Promise((resolve, reject) => {
-        if (!fs.existsSync(path)) {
-            reject(new Error("File does not exist"));
-        }
-        fs.readFile(path, "utf8", (err, data) => {
-            if (err) {
-                reject(new Error(`Couldn't read file ${path}`));
-            }
-            else {
-                resolve(data);
-            }
-        });
-    });
-}
-exports.readFile = readFile;
 function buildYargs() {
     return __awaiter(this, void 0, void 0, function* () {
         yargonaut_1.default.helpStyle(HELP_STYLE).errorsStyle(ERROR_STYLE);
         const cwd = process.cwd();
-        // const hikeConfig = JSON.parse(await readFile(path.join(cwd, HIKE_CONFIG_NAME)));
-        const hikeConfig = {
-            generators: [
-                '@hyke/core'
-            ]
-        };
+        const hikeConfig = JSON.parse(yield util_1.readFile(path.join(cwd, HIKE_CONFIG_NAME)));
+        // const hikeConfig = {
+        //     generators: [
+        //         "@hyke/core",
+        //     ],
+        // };
         const generatorPackages = hikeConfig.generators;
-        const generators = [];
+        yargs.command(initCommand_1.default);
+        yargs.command(addCommand_1.default);
         generatorPackages.forEach((generatorPackageName) => {
-            console.log(generatorPackageName);
             const generatorPackage = require(generatorPackageName);
-            console.log(generatorPackage);
-            generators.concat(generatorPackage);
+            const commandNames = Object.keys(generatorPackage);
+            commandNames.forEach(name => {
+                const command = generatorPackage[name];
+                yargs.command(command);
+            });
         });
-        // TODO: Build yargs
-        // yargs
-        //     .command(initApplicationCommand)
-        //     .demandCommand()
-        //     .showHelpOnFail(true)
-        //     .recommendCommands()
-        //     .strict()
-        //     .help().argv;
-        //
+        yargs.demandCommand()
+            .showHelpOnFail(true)
+            .recommendCommands()
+            .strict()
+            .help().argv;
     });
 }
 buildYargs().catch(console.log);
