@@ -24,12 +24,11 @@ const initCommand = {
         fs.mkdirSync(projectDir);
         process.chdir(projectDir);
         await execute("yarn", ["add", "@hyke/core", "--dev"]);
-        const packageJson = JSON.parse(await readFile(path.join(projectDir, "package.json")));
         const hikeConfig = {
             appName: args.AppName,
-            generators: {
-                "@hyke/cli": packageJson.devDependencies["@hyke/core"],
-            },
+            generators: [
+                "@hyke/core"
+            ],
         };
         await writeToFile(path.join(projectDir, "hike.json"), JSON.stringify(hikeConfig, null, 2));
     },

@@ -25,6 +25,7 @@ const yargs = __importStar(require("yargs"));
 const addCommand_1 = __importDefault(require("./commands/addCommand"));
 const util_1 = require("./util");
 const path = __importStar(require("path"));
+const fs = __importStar(require("fs"));
 const HELP_STYLE = "green";
 const ERROR_STYLE = "red";
 const HIKE_CONFIG_NAME = "hike.json";
@@ -32,23 +33,23 @@ function buildYargs() {
     return __awaiter(this, void 0, void 0, function* () {
         yargonaut_1.default.helpStyle(HELP_STYLE).errorsStyle(ERROR_STYLE);
         const cwd = process.cwd();
-        const hikeConfig = JSON.parse(yield util_1.readFile(path.join(cwd, HIKE_CONFIG_NAME)));
-        // const hikeConfig = {
-        //     generators: [
-        //         "@hyke/core",
-        //     ],
-        // };
-        const generatorPackages = hikeConfig.generators;
-        yargs.command(initCommand_1.default);
-        yargs.command(addCommand_1.default);
-        generatorPackages.forEach((generatorPackageName) => {
-            const generatorPackage = require(generatorPackageName);
-            const commandNames = Object.keys(generatorPackage);
-            commandNames.forEach(name => {
-                const command = generatorPackage[name];
-                yargs.command(command);
+        if (!fs.existsSync(path.join(cwd, HIKE_CONFIG_NAME))) {
+            yargs.command(initCommand_1.default);
+        }
+        else {
+            yargs.command(addCommand_1.default);
+            const hikeConfig = JSON.parse(yield util_1.readFile(path.join(cwd, HIKE_CONFIG_NAME)));
+            const generatorPackages = hikeConfig.generators;
+            generatorPackages.forEach((generatorPackageName) => {
+                console.log(generatorPackageName);
+                const generatorPackage = require(generatorPackageName);
+                const commandNames = Object.keys(generatorPackage);
+                commandNames.forEach(name => {
+                    const command = generatorPackage[name];
+                    yargs.command(command);
+                });
             });
-        });
+        }
         yargs.demandCommand()
             .showHelpOnFail(true)
             .recommendCommands()
