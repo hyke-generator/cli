@@ -42,7 +42,7 @@ function buildYargs() {
             const generatorPackages = hikeConfig.generators;
             generatorPackages.forEach((generatorPackageName) => {
                 console.log(generatorPackageName);
-                const generatorPackage = require(generatorPackageName);
+                const generatorPackage = require(path.join(process.cwd(), "node_modules", generatorPackageName));
                 const commandNames = Object.keys(generatorPackage);
                 commandNames.forEach(name => {
                     const command = generatorPackage[name];

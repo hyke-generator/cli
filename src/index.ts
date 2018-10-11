@@ -25,7 +25,7 @@ async function buildYargs() {
 
         generatorPackages.forEach((generatorPackageName: string) => {
             console.log(generatorPackageName);
-            const generatorPackage = require(generatorPackageName);
+            const generatorPackage = require(path.join(process.cwd(), "node_modules", generatorPackageName));
             const commandNames = Object.keys(generatorPackage);
             commandNames.forEach(name => {
                 const command = generatorPackage[name];
