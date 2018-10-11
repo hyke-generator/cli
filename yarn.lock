@@ -567,14 +567,11 @@
     lodash "^4.17.10"
     to-fast-properties "^2.0.0"
 
-"@hyke/core@file:../core":
-  version "1.0.2"
+"@hyke/core@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@hyke/core/-/core-1.0.1.tgz#a06f4b5e7493de3e3c0af67abda53a32ff9d6425"
   dependencies:
     "@hyke/sdk" "^1.0.5"
-    camelcase "^5.0.0"
-    decamelize "^2.0.0"
-    uppercamelcase "^3.0.0"
-    yargs "^12.0.2"
 
 "@hyke/sdk@^1.0.5":
   version "1.0.5"
