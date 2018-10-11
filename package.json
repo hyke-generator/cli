@@ -1,5 +1,5 @@
 {
-  "name": "hike-cli",
+  "name": "@hyke/cli",
   "version": "1.0.20",
   "description": "",
   "main": "index.js",
@@ -11,14 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/lklacar/hike.git"
+    "url": "git+https://github.com/hyke-generator/cli.git"
   },
   "author": "Luka Klacar",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/lklacar/hike/issues"
+    "url": "https://github.com/hyke-generator/cli/issues"
   },
-  "homepage": "https://github.com/lklacar/hike#readme",
+  "homepage": "https://hyke-generator.github.io/",
   "devDependencies": {
     "@types/camelcase": "^4.1.0",
     "@types/decamelize": "^1.2.0",
