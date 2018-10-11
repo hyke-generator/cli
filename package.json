@@ -20,32 +20,26 @@
   },
   "homepage": "https://hyke-generator.github.io/",
   "devDependencies": {
-    "@hyke/core": "^1.0.1",
+    "@hyke/core": "^1.0.7",
     "@types/camelcase": "^4.1.0",
     "@types/chalk": "^2.2.0",
     "@types/decamelize": "^1.2.0",
     "@types/mustache": "^0.8.31",
-    "@types/node": "^10.11.3",
+    "@types/node": "^10.11.7",
     "@types/uppercamelcase": "^3.0.0",
-    "@types/yargs": "^12.0.0",
+    "@types/yargs": "^12.0.1",
     "tslint": "^5.11.0",
-    "typescript": "^3.1.1"
+    "typescript": "^3.1.2"
   },
   "bin": {
     "hike": "./dist/index.js"
   },
   "dependencies": {
-    "@types/chalk": "^2.2.0",
-    "@types/mustache": "^0.8.31",
-    "@types/node": "^10.11.3",
-    "@types/yargs": "^12.0.0",
     "camelcase": "^5.0.0",
     "chalk": "^2.4.1",
     "chalk-animation": "^1.6.0",
     "decamelize": "^2.0.0",
     "mustache": "^3.0.0",
-    "react-native": "^0.57.1",
-    "react-native-cli": "^2.0.1",
     "require-text": "^0.0.1",
     "uppercamelcase": "^3.0.0",
     "yargonaut": "^1.1.4",
