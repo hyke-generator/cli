@@ -1,6 +1,6 @@
 {
   "name": "@hyke/cli",
-  "version": "1.0.20",
+  "version": "1.0.21",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -34,6 +34,10 @@
     "hike": "./dist/index.js"
   },
   "dependencies": {
+    "@types/chalk": "^2.2.0",
+    "@types/mustache": "^0.8.31",
+    "@types/node": "^10.11.3",
+    "@types/yargs": "^12.0.0",
     "camelcase": "^5.0.0",
     "chalk": "^2.4.1",
     "chalk-animation": "^1.6.0",
