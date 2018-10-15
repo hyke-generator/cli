@@ -1,8 +1,8 @@
 # Hike
 
 [![CI Status](https://api.travis-ci.org/hyke-generator/cli.svg?branch=master)](https://api.travis-ci.org/hyke-generator/cli.svg?branch=master)
-[![dependencies Status](https://david-dm.org/lklacar/hike/status.svg)](https://david-dm.org/lklacar/hike)
-[![npm version](https://badge.fury.io/js/hike-cli.svg)](https://badge.fury.io/js/hike-cli)
+[![dependencies Status](https://david-dm.org/hyke-generator/hike/status.svg)](https://david-dm.org/hyke-generator/hike/status.svg)
+[![npm version](https://badge.fury.io/js/%40hyke%2Fcli.svg)](https://badge.fury.io/js/%40hyke%2Fcli.svg)
 ## Usage
 
 - Generate new application
