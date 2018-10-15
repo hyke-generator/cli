@@ -1,9 +1,7 @@
 import * as fs from "fs";
 import { Arguments, Argv, CommandModule } from "yargs";
 import * as path from "path";
-import { execute, readFile, writeToFile } from "../util";
-
-const uppercamelcase = require("uppercamelcase");
+import { execute, writeToFile } from "../util";
 
 const initCommand = {
     command: "init <AppName>",
@@ -27,7 +25,7 @@ const initCommand = {
         const hikeConfig = {
             appName: args.AppName,
             generators: [
-                "@hyke/core"
+                "@hyke/core",
             ],
         };
         await writeToFile(path.join(projectDir, "hike.json"), JSON.stringify(hikeConfig, null, 2));
