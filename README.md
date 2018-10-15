@@ -1,7 +1,7 @@
 # Hike
 
 [![CI Status](https://api.travis-ci.org/hyke-generator/cli.svg?branch=master)](https://api.travis-ci.org/hyke-generator/cli.svg?branch=master)
-[![dependencies Status](https://david-dm.org/hyke-generator/hike/status.svg)](https://david-dm.org/hyke-generator/hike/status.svg)
+[![dependencies Status](https://david-dm.org/hyke-generator/cli/status.svg)](https://david-dm.org/hyke-generator/cli)
 [![npm version](https://badge.fury.io/js/%40hyke%2Fcli.svg)](https://badge.fury.io/js/%40hyke%2Fcli.svg)
 ## Usage
 
