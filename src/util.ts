@@ -1,8 +1,6 @@
 import * as fs from "fs";
 import { PathLike } from "fs";
-import { ChildProcess, SpawnOptions } from "child_process";
-import { spawn } from "child_process";
-import * as path from "path";
+import { ChildProcess, spawn, SpawnOptions } from "child_process";
 
 export function execute(
     command: string,
