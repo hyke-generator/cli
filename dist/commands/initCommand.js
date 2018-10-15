@@ -18,7 +18,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const fs = __importStar(require("fs"));
 const path = __importStar(require("path"));
 const util_1 = require("../util");
-const uppercamelcase = require("uppercamelcase");
 const initCommand = {
     command: "init <AppName>",
     aliases: ["i"],
@@ -41,7 +40,7 @@ const initCommand = {
         const hikeConfig = {
             appName: args.AppName,
             generators: [
-                "@hyke/core"
+                "@hyke/core",
             ],
         };
         yield util_1.writeToFile(path.join(projectDir, "hike.json"), JSON.stringify(hikeConfig, null, 2));
