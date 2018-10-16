@@ -1,6 +1,6 @@
 import * as fs from "fs";
-import { Arguments, Argv, CommandModule } from "yargs";
 import * as path from "path";
+import { Arguments, Argv, CommandModule } from "yargs";
 import { execute, writeToFile } from "../util";
 
 const initCommand = {

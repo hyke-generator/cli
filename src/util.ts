@@ -1,6 +1,6 @@
+import { ChildProcess, spawn, SpawnOptions } from "child_process";
 import * as fs from "fs";
 import { PathLike } from "fs";
-import { ChildProcess, spawn, SpawnOptions } from "child_process";
 
 export function execute(
     command: string,
@@ -35,7 +35,7 @@ export function execute(
 
 export function writeToFile(path: PathLike, data: string): Promise<void> {
     return new Promise<void>((resolve, reject) => {
-        fs.writeFile(path, data, err => {
+        fs.writeFile(path, data, (err) => {
             if (err) {
                 reject(new Error(`Couldn't write to file ${path}`));
             } else {
