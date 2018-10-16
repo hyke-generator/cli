@@ -24,9 +24,7 @@ const initCommand = {
         await execute("yarn", ["add", "@hyke/core", "--dev"]);
         const hikeConfig = {
             appName: args.AppName,
-            generators: [
-                "@hyke/core",
-            ],
+            generators: ["@hyke/core"],
         };
         await writeToFile(path.join(projectDir, "hike.json"), JSON.stringify(hikeConfig, null, 2));
     },

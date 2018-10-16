@@ -31,11 +31,11 @@ async function buildYargs() {
                 const command = generatorPackage[name];
                 yargs.command(command);
             });
-
         });
     }
 
-    yargs.demandCommand()
+    yargs
+        .demandCommand()
         .showHelpOnFail(true)
         .recommendCommands()
         .strict()
@@ -43,5 +43,3 @@ async function buildYargs() {
 }
 
 buildYargs().catch(console.log);
-
-
