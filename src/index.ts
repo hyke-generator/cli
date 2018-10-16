@@ -1,12 +1,12 @@
 #!/usr/bin/env node
+import * as fs from "fs";
+import * as path from "path";
 // @ts-ignore
 import yargonaut from "yargonaut";
-import initCommand from "./commands/initCommand";
 import * as yargs from "yargs";
 import addCommand from "./commands/addCommand";
+import initCommand from "./commands/initCommand";
 import { readFile } from "./util";
-import * as path from "path";
-import * as fs from "fs";
 
 const HELP_STYLE = "green";
 const ERROR_STYLE = "red";
@@ -27,14 +27,14 @@ async function buildYargs() {
             console.log(generatorPackageName);
             const generatorPackage = require(path.join(process.cwd(), "node_modules", generatorPackageName));
             const commandNames = Object.keys(generatorPackage);
-            commandNames.forEach(name => {
+            commandNames.forEach((name) => {
                 const command = generatorPackage[name];
                 yargs.command(command);
             });
         });
     }
 
-    yargs
+    const commands = yargs
         .demandCommand()
         .showHelpOnFail(true)
         .recommendCommands()

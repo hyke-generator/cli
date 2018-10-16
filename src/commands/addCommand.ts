@@ -1,5 +1,5 @@
-import { Arguments, Argv, CommandModule } from "yargs";
 import * as path from "path";
+import { Arguments, Argv, CommandModule } from "yargs";
 import { execute, readFile, writeToFile } from "../util";
 
 const addCommand = {
