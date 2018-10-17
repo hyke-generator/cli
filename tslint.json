@@ -1,25 +1,6 @@
 {
-    "defaultSeverity": "error",
-    "extends": [
-        "tslint:recommended"
-    ],
-    "jsRules": {},
-    "rules": {
-        "object-literal-sort-keys": false,
-        "no-console": false,
-        "member-access": true,
-        "no-any": true,
-        "no-var-keyword": true,
-        "curly": true,
-        "no-empty": true,
-        "triple-equals": true,
-        "prefer-const": true,
-        "trailing-comma": true,
-        "interface-over-type-literal": true,
-        "prefer-method-signature": true,
-        "prefer-template": true,
-        "semicolon": true
-
-    },
-    "rulesDirectory": []
+  "extends": [
+    "tslint-config-standard",
+    "tslint-config-prettier"
+  ]
 }
