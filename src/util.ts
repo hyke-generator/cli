@@ -1,6 +1,5 @@
 import { ChildProcess, spawn, SpawnOptions } from "child_process";
 import * as fs from "fs";
-import { PathLike } from "fs";
 
 export function execute(
     command: string,
@@ -33,7 +32,7 @@ export function execute(
     });
 }
 
-export function writeToFile(path: PathLike, data: string): Promise<void> {
+export function writeToFile(path: fs.PathLike, data: string): Promise<void> {
     return new Promise<void>((resolve, reject) => {
         fs.writeFile(path, data, (err) => {
             if (err) {
@@ -45,7 +44,7 @@ export function writeToFile(path: PathLike, data: string): Promise<void> {
     });
 }
 
-export function readFile(path: PathLike): Promise<string> {
+export function readFile(path: fs.PathLike): Promise<string> {
     return new Promise<string>((resolve, reject) => {
         if (!fs.existsSync(path)) {
             reject(new Error("File does not exist"));
